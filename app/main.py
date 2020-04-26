@@ -2,6 +2,7 @@ import json
 import os
 import random
 import bottle
+from Brain import avoidwall,message
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -53,16 +54,16 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-
+    message(data)
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
     """
     print(json.dumps(data))
 
-    directions = ['up', 'down', 'left', 'right']
-    direction = random.choice(directions)
-
+    #directions = ['up', 'down', 'left', 'right']
+    #direction = random.choice(directions)
+    direction = avoidwall(data)
     return move_response(direction)
 
 
