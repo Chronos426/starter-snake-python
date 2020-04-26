@@ -54,6 +54,7 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+
     message(data)
     """
     TODO: Using the data from the endpoint request object, your
