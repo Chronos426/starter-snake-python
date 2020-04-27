@@ -9,62 +9,65 @@
 def message(data):
     print(data)
 
-def avoidwall(data):
+def choix_chemin(data,chemin):
+    for i in range(len(chemin) - 1):
+        if chemin[i] > chemin[i + 1]:
+            return i
+        else:
+            return i + 1
+
+
+def obstacle_detection(data):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
     head_x_2 = data['you']['body'][1]['x']
     head_y_2 = data['you']['body'][1]['y']
     board_width = data['board']['width']
     board_height = data['board']['height']
+    chemin = [0, 0, 0, 0]
 
+    if head_x_1 == 0:
+        chemin[0] = -1000
+    if head_x_1 == board_width - 1:
+        chemin[1] = -1000
+    if head_y_1 == 0:
+        chemin[2] = -1000
+    if head_y_1 == board_height - 1:
+        chemin[3] = -1000
 
-    if head_x_1 > head_x_2:
-        direction = 'E'
-        front_tim = [head_x_1 + 1, head_y_1]
-        left_tim = [head_x_1, head_y_1 - 1]
-        right_tim = [head_x_1, head_y_1 + 1]
-    elif head_x_1 < head_x_2:
-        direction = 'O'
-        front_tim = [head_x_1 - 1, head_y_1]
-        left_tim = [head_x_1, head_y_1 + 1]
-        right_tim = [head_x_1, head_y_1 - 1]
-    elif head_y_1 < head_y_2:
-        direction = 'N'
-        front_tim = [head_x_1, head_y_1 - 1]
-        left_tim = [head_x_1 - 1, head_y_1]
-        right_tim = [head_x_1 + 1, head_y_1]
+    food_path(data,chemin)
+
+    direction = choix_chemin(data,chemin)
+
+    if direction == 0:
+        return 'left'
+    elif direction == 1:
+        return  'right'
+    elif direction == 2:
+        return 'up'
+    elif direction == 3:
+        return  'down'
+
+def food_path(data,chemin):
+    head_x_1 = data['you']['body'][0]['x']
+    head_y_1 = data['you']['body'][0]['y']
+    food_x = data['board']['food'][0]['x']
+    food_y = data['board']['food'][0]['y']
+
+    diff_x = head_x_1 - food_x
+    diff_y = head_y_1 - food_y
+
+    if abs(diff_x)>= abs(diff_y):
+        if diff_x > 0:
+            chemin[0] += 1
+            return
+        else:
+            chemin[1] += 1
+            return
     else:
-        direction = 'S'
-        front_tim = [head_x_1, head_y_1 + 1]
-        left_tim = [head_x_1 + 1, head_y_1]
-        right_tim = [head_x_1 - 1, head_y_1]
-
-    if head_x_1 == 0 and direction == 'O':
-        if head_y_1 == 0:
-            return 'down'
+        if diff_y > 0:
+            chemin[3] += 1
+            return
         else:
-            return 'up'
-    elif head_y_1 == 0 and direction == 'N':
-        if head_x_1 == 0:
-            return 'right'
-        else:
-            return 'left'
-    elif head_y_1 == board_height - 1 and direction == 'S':
-        if head_x_1 == 0:
-            return 'right'
-        else:
-            return 'left'
-    elif head_x_1 == board_width - 1 and direction == 'E':
-        if head_y_1 == 0:
-            return 'down'
-        else:
-            return 'up'
-    else:
-        if direction == 'E':
-            return 'right'
-        elif direction == 'O':
-            return 'left'
-        elif direction == 'N':
-            return 'up'
-        elif direction == 'S':
-            return 'down'
+            chemin[2] += 1
+            return
