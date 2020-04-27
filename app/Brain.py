@@ -14,7 +14,20 @@ def choix_chemin(chemin):
         if chemin[i] == max(chemin):
             return i
 
-
+def body_detection(data,chemin):
+    head_x_1 = data['you']['body'][0]['x']
+    head_y_1 = data['you']['body'][0]['y']
+    taille_snake = len(data['body'])
+    for i in range(taille_snake) - 1:
+        if head_x_1 + 1 == data['body'][i+1]['x'] and head_y_1 == data['body'][i+1]['y']:
+            chemin[1] -= 1000
+        if head_x_1 - 1 == data['body'][i+1]['x'] and head_y_1 == data['body'][i+1]['y']:
+            chemin[0] -= 1000
+        if head_y_1 - 1 == data['body'][i+1]['y'] and head_x_1 == data['body'][i+1]['x']:
+            chemin[2] -= 1000
+        if head_y_1 + 1 == data['body'][i+1]['y'] and head_x_1 == data['body'][i+1]['x']:
+            chemin[3] -= 1000
+    return
 
 def obstacle_detection(data):
     head_x_1 = data['you']['body'][0]['x']
@@ -34,7 +47,9 @@ def obstacle_detection(data):
     if head_y_1 == board_height - 1:
         chemin[3] = -1000
 
-    #food_path(data,chemin)
+    #food_path(data, chemin)
+
+    body_detection(data, chemin)
 
     direction = choix_chemin(chemin)
 
