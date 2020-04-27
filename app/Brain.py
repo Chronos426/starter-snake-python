@@ -47,9 +47,9 @@ def obstacle_detection(data):
     if head_y_1 == board_height - 1:
         chemin[3] -= 1000
 
-    #food_path(data, chemin)
+    food_path(data, chemin)
 
-    body_detection(data, chemin)
+    #body_detection(data, chemin)
 
     direction = choix_chemin(chemin)
     print("chemin: " + chemin)
