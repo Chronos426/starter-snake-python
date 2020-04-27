@@ -52,7 +52,10 @@ def obstacle_detection(data):
     #body_detection(data, chemin)
 
     direction = choix_chemin(chemin)
-    print("chemin: " + chemin)
+    print("chemin 0: " + str(chemin[0]))
+    print("chemin 1: " + str(chemin[1]))
+    print("chemin 2: " + str(chemin[2]))
+    print("chemin 3: " + str(chemin[3]))
     print("direction: " + direction)
 
     if direction == 0:
