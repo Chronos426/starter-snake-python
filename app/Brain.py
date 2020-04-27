@@ -56,7 +56,7 @@ def obstacle_detection(data):
     print("chemin 1: " + str(chemin[1]))
     print("chemin 2: " + str(chemin[2]))
     print("chemin 3: " + str(chemin[3]))
-    print("direction: " + direction)
+    print("direction: " + str(direction))
 
     if direction == 0:
         return 'left'
