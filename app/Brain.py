@@ -49,7 +49,7 @@ def obstacle_detection(data):
 
     food_path(data, chemin)
 
-    #body_detection(data, chemin)
+    body_detection(data, chemin)
 
     direction = choix_chemin(chemin)
     print("chemin 0: " + str(chemin[0]))
