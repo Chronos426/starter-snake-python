@@ -39,30 +39,32 @@ def obstacle_detection(data):
     chemin = [0, 0, 0, 0]
 
     if head_x_1 == 0:
-        chemin[0] = -1000
+        chemin[0] -= 1000
     if head_x_1 == board_width - 1:
-        chemin[1] = -1000
+        chemin[1] -= 1000
     if head_y_1 == 0:
-        chemin[2] = -1000
+        chemin[2] -= 1000
     if head_y_1 == board_height - 1:
-        chemin[3] = -1000
+        chemin[3] -= 1000
 
     #food_path(data, chemin)
 
     body_detection(data, chemin)
 
     direction = choix_chemin(chemin)
+    print("chemin: " + chemin)
+    print("direction: " + direction)
 
     if direction == 0:
         return 'left'
     elif direction == 1:
-        return  'right'
+        return 'right'
     elif direction == 2:
         return 'up'
     elif direction == 3:
-        return  'down'
+        return 'down'
 
-def food_path(data,chemin):
+def food_path(data, chemin):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
     food_x = data['board']['food'][0]['x']
@@ -71,7 +73,7 @@ def food_path(data,chemin):
     diff_x = head_x_1 - food_x
     diff_y = head_y_1 - food_y
 
-    if abs(diff_x)>= abs(diff_y):
+    if abs(diff_x) >= abs(diff_y):
         if diff_x > 0:
             chemin[0] += 1
             return
