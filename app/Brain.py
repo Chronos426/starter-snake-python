@@ -85,8 +85,8 @@ def food_path(data, chemin):
             return
     else:
         if diff_y > 0:
-            chemin[3] += 1
+            chemin[2] += 1
             return
         else:
-            chemin[2] += 1
+            chemin[3] += 1
             return
