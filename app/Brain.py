@@ -9,12 +9,11 @@
 def message(data):
     print(data)
 
-def choix_chemin(data,chemin):
-    for i in range(len(chemin) - 1):
-        if chemin[i] > chemin[i + 1]:
+def choix_chemin(chemin):
+    for i in range(4):
+        if chemin[i] == max(chemin):
             return i
-        else:
-            return i + 1
+
 
 
 def obstacle_detection(data):
@@ -37,7 +36,7 @@ def obstacle_detection(data):
 
     food_path(data,chemin)
 
-    direction = choix_chemin(data,chemin)
+    direction = choix_chemin(chemin)
 
     if direction == 0:
         return 'left'
