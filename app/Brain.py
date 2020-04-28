@@ -1,4 +1,4 @@
-#from  Nombre_passage_algo import nombre_case
+from  Nombre_passage_algo import nombre_case
 
 #data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
  #              "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}, "board": {
