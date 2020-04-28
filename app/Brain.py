@@ -17,8 +17,8 @@ def choix_chemin(chemin):
 def body_detection(data,chemin):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
-    taille_snake = len(data['body'])
-    for i in range(taille_snake) - 1:
+    taille = len(data['you']['body'])
+    for i in range(taille) - 1:
         if head_x_1 + 1 == data['body'][i+1]['x'] and head_y_1 == data['body'][i+1]['y']:
             chemin[1] -= 1000
         if head_x_1 - 1 == data['body'][i+1]['x'] and head_y_1 == data['body'][i+1]['y']:
