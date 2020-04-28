@@ -60,6 +60,8 @@ def obstacle_detection(data):
 
     nombre_case(data, chemin)
 
+    colision_tete(data,chemin)
+
     direction = choix_chemin(chemin)
     print("chemin 0: " + str(chemin[0]))
     print("chemin 1: " + str(chemin[1]))
