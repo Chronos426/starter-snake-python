@@ -90,6 +90,7 @@ def colision_tete(data, chemin):
         if data['board']['snakes'][i]['id'] != data['you']['id']:
 
             snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
+            print("snake_position: " + snake_position)
             snake_position[i*8] -= 1
             snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
 
