@@ -82,22 +82,22 @@ def obstacle_detection(data):
 def colision_tete(data, chemin):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
-    snake_number = len(data['board']['snakes'])
+    snake_number = len(data['board']['snakes']) - 1
     snake_position = []
 
     for i in range(snake_number):
 
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x']) - 1
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x']) - 1
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y'])
 
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x']) + 1
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x']) + 1
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y'])
 
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y']) - 1
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x'])
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y']) - 1
 
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
-       snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y']) + 1
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x'])
+       snake_position = snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y']) + 1
 
     for i in snake_position:
         if head_x_1 - 1 == snake_position[i*2] and head_y_1 == snake_position[(i+1)*2]:
