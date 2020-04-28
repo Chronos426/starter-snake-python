@@ -18,14 +18,15 @@ def body_detection(data,chemin):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
     taille = len(data['you']['body'])
-    for i in range(taille) - 1:
-        if head_x_1 + 1 == data['body'][i+1]['x'] and head_y_1 == data['body'][i+1]['y']:
+    taille -= 1
+    for i in range(taille):
+        if head_x_1 + 1 == data['you']['body'][i+1]['x'] and head_y_1 == data['you']['body'][i+1]['y']:
             chemin[1] -= 1000
-        if head_x_1 - 1 == data['body'][i+1]['x'] and head_y_1 == data['body'][i+1]['y']:
+        if head_x_1 - 1 == data['you']['body'][i+1]['x'] and head_y_1 == data['you']['body'][i+1]['y']:
             chemin[0] -= 1000
-        if head_y_1 - 1 == data['body'][i+1]['y'] and head_x_1 == data['body'][i+1]['x']:
+        if head_y_1 - 1 == data['you']['body'][i+1]['y'] and head_x_1 == data['you']['body'][i+1]['x']:
             chemin[2] -= 1000
-        if head_y_1 + 1 == data['body'][i+1]['y'] and head_x_1 == data['body'][i+1]['x']:
+        if head_y_1 + 1 == data['you']['body'][i+1]['y'] and head_x_1 == data['you']['body'][i+1]['x']:
             chemin[3] -= 1000
     return
 
