@@ -91,12 +91,12 @@ def food_path(data, chemin):
                 chemin[0] += 1+(1/diff_x)
                 return
             else:
-                chemin[1] += 1+(1/diff_x)
+                chemin[1] += 1+(1/abs(diff_x))
                 return
         else:
             if diff_y > 0:
                 chemin[2] += 1+(1/diff_y)
                 return
             else:
-                chemin[3] += 1+(1/diff_y)
+                chemin[3] += 1+(1/abs(diff_y))
                 return
