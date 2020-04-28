@@ -84,8 +84,6 @@ def food_path(data, chemin):
 
     nombre_food = len(data['board']['food'])
 
-    print("nombre food: " + str(nombre_food))
-
     for i in range(nombre_food):
         food_x = data['board']['food'][i]['x']
         food_y = data['board']['food'][i]['y']
@@ -94,16 +92,12 @@ def food_path(data, chemin):
         diff_y = head_y_1 - food_y
 
         if diff_x != 0:
-            print("diff_x: " + str(diff_x))
-            print("1/diff_x: " + str(1. / diff_x))
             if diff_x > 0:
                 chemin[0] += 1./diff_x
             else:
                 chemin[1] += abs(1./diff_x)
 
         if diff_y != 0:
-            print("diff_y: " + str(diff_y))
-            print("1/diff_y: " + str(1./diff_y))
             if diff_y > 0:
                 chemin[2] += 1./diff_y
             else:
