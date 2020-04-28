@@ -86,14 +86,14 @@ def food_path(data, chemin):
         diff_x = head_x_1 - food_x
         diff_y = head_y_1 - food_y
 
-        if abs(diff_x) >= abs(diff_y):
+        if diff_x != 0:
             if diff_x > 0:
                 chemin[0] += 1+(1/diff_x)
                 return
             else:
                 chemin[1] += 1+(1/abs(diff_x))
                 return
-        else:
+        elif diff_y != 0:
             if diff_y > 0:
                 chemin[2] += 1+(1/diff_y)
                 return
