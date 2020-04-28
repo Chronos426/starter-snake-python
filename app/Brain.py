@@ -96,14 +96,14 @@ def colision_tete(data, chemin):
             snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
             snake_position.append(data['board']['snakes'][i]['body'][0]['y'] + 1)
 
-    for i in snake_position:
-        if head_x_1 - 1 == snake_position[i*2] and head_y_1 == snake_position[(i+1)*2]:
+    for i in range(0, len(snake_position), 2):
+        if head_x_1 - 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
             chemin[0] -= 300
-        if head_x_1 + 1 == snake_position[i*2] and head_y_1 == snake_position[(i+1)*2]:
+        if head_x_1 + 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
             chemin[1] -= 300
-        if head_x_1 == snake_position[i*2] and head_y_1 - 1 == snake_position[(i+1)*2]:
+        if head_x_1 == snake_position[i] and head_y_1 - 1 == snake_position[i+1]:
             chemin[2] -= 300
-        if head_x_1 == snake_position[i*2] and head_y_1 + 1 == snake_position[(i+1)*2]:
+        if head_x_1 == snake_position[i] and head_y_1 + 1 == snake_position[i+1]:
             chemin[3] -= 300
 
 
