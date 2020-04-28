@@ -1,12 +1,12 @@
 from  Nombre_passage_algo import nombre_case
 
-#data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
-  #              "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}, "board": {
-  #  "food": [{"y": 7, "x": 0}, {"y": 7, "x": 2}, {"y": 6, "x": 1}, {"y": 2, "x": 3}, {"y": 5, "x": 1}], "snakes": [
-  #      {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
-  #       "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}], "width": 11, "height": 11},
-  #  "turn": 6, "game": {"id": "08076fc9-07f0-462c-9ec7-59b3c8fdb08d"}}
-#chemin = [0, 0, 0, 0]
+data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
+               "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}, "board": {
+    "food": [{"y": 7, "x": 0}, {"y": 7, "x": 2}, {"y": 6, "x": 1}, {"y": 2, "x": 3}, {"y": 5, "x": 1}], "snakes": [
+        {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
+         "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}], "width": 11, "height": 11},
+   "turn": 6, "game": {"id": "08076fc9-07f0-462c-9ec7-59b3c8fdb08d"}}
+chemin = [0, 0, 0, 0]
 
 def message(data):
     print(data)
@@ -82,26 +82,28 @@ def obstacle_detection(data):
 def colision_tete(data, chemin):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
-    snake_number = len(data['board']['snakes']) - 1
+    snake_number = len(data['board']['snakes'])
     snake_position = []
 
     for i in range(snake_number):
 
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x']))
-       snake_position[i*8] -= 1
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y']))
+        if data['board']['snakes'][i]['id'] != data['you']['id']:
 
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x']))
-       snake_position[(i + 2) * 8] += 1
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y']))
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
+            snake_position[i*8] -= 1
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
 
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x']))
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y']))
-       snake_position[(i + 5) * 8] -= 1
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
+            snake_position[(i + 2) * 8] += 1
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
 
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['x']))
-       snake_position = int(snake_position.append(data['board']['snakes'][i + 1]['body'][0]['y']))
-       snake_position[(i + 7) * 8] += 1
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
+            snake_position[(i + 5) * 8] -= 1
+
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
+            snake_position = snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
+            snake_position[(i + 7) * 8] += 1
 
     for i in snake_position:
         if head_x_1 - 1 == snake_position[i*2] and head_y_1 == snake_position[(i+1)*2]:
