@@ -81,7 +81,7 @@ def food_path(data, chemin):
 
     nombre_food = len(data['board']['food'])
 
-    print("nombre food: " + nombre_food)
+    print("nombre food: " + str(nombre_food))
 
     for i in range(nombre_food):
         food_x = data['board']['food'][i]['x']
