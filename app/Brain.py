@@ -1,9 +1,10 @@
-'''data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
-                "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}, "board": {
-    "food": [{"y": 7, "x": 0}, {"y": 7, "x": 2}, {"y": 6, "x": 1}, {"y": 2, "x": 3}, {"y": 5, "x": 1}], "snakes": [
-        {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
-         "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}], "width": 11, "height": 11},
-        "turn": 6, "game": {"id": "08076fc9-07f0-462c-9ec7-59b3c8fdb08d"}}'''
+#data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
+#                "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}, "board": {
+#    "food": [{"y": 7, "x": 0}, {"y": 7, "x": 2}, {"y": 6, "x": 1}, {"y": 2, "x": 3}, {"y": 5, "x": 1}], "snakes": [
+#        {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], "health": 94,
+#         "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}], "width": 11, "height": 11},
+#       "turn": 6, "game": {"id": "08076fc9-07f0-462c-9ec7-59b3c8fdb08d"}}
+#chemin = [0, 0, 0, 0]
 
 
 def message(data):
@@ -17,17 +18,21 @@ def choix_chemin(chemin):
 def body_detection(data,chemin):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
-    taille = len(data['you']['body'])
-    taille -= 1
-    for i in range(taille):
-        if head_x_1 + 1 == data['you']['body'][i+1]['x'] and head_y_1 == data['you']['body'][i+1]['y']:
-            chemin[1] -= 1000
-        if head_x_1 - 1 == data['you']['body'][i+1]['x'] and head_y_1 == data['you']['body'][i+1]['y']:
-            chemin[0] -= 1000
-        if head_y_1 - 1 == data['you']['body'][i+1]['y'] and head_x_1 == data['you']['body'][i+1]['x']:
-            chemin[2] -= 1000
-        if head_y_1 + 1 == data['you']['body'][i+1]['y'] and head_x_1 == data['you']['body'][i+1]['x']:
-            chemin[3] -= 1000
+
+    nombre_snake = len(data['board']['snakes'])
+
+    for j in range(nombre_snake):
+        taille = len(data['board']['snakes'][j]['body'])
+        taille -= 1
+        for i in range(taille):
+            if head_x_1 + 1 == data['board']['snakes'][j]['body'][i+1]['x'] and head_y_1 == data['board']['snakes'][j]['body'][i+1]['y']:
+                chemin[1] -= 1000
+            if head_x_1 - 1 == data['board']['snakes'][j]['body'][i+1]['x'] and head_y_1 == data['board']['snakes'][j]['body'][i+1]['y']:
+                chemin[0] -= 1000
+            if head_y_1 - 1 == data['board']['snakes'][j]['body'][i+1]['y'] and head_x_1 == data['board']['snakes'][j]['body'][i+1]['x']:
+                chemin[2] -= 1000
+            if head_y_1 + 1 == data['board']['snakes'][j]['body'][i+1]['y'] and head_x_1 == data['board']['snakes'][j]['body'][i+1]['x']:
+                chemin[3] -= 1000
     return
 
 def obstacle_detection(data):
