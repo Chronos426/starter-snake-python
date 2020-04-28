@@ -33,6 +33,10 @@ def nombre_case(data,chemin):
 
     print(str(chemin_passage))
 
+    for i in range(4):
+        chemin[i] += chemin_passage[i]
+
+
 def calcul_passage(data, board_matrice, x, y, chemin_passage):
     global passage
     board_width = data['board']['width']
