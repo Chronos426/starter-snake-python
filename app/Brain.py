@@ -3,9 +3,6 @@ from  Nombre_passage_algo import nombre_case
 #data = {u'game': {u'id': u'bf0cfccd-1e2f-474c-82a9-92f30ae64bf4'}, u'turn': 5, u'board': {u'width': 11, u'food': [{u'x': 10, u'y': 2}, {u'x': 2, u'y': 4}], u'height': 11, u'snakes': [{u'shout': u'', u'body': [{u'x': 1, u'y': 0}, {u'x': 1, u'y': 1}, {u'x': 1, u'y': 2}], u'name': u'SnakeOne', u'id': u'gs_xVWXycYGQShh3fWQVKk9gHRF', u'health': 95}, {u'shout': u'', u'body': [{u'x': 3, u'y': 6}, {u'x': 3, u'y': 7}, {u'x': 2, u'y': 7}], u'name': u'Random', u'id': u'gs_GStXcfJMJmDRxDhCTY8hYyJ9', u'health': 95}]}, u'you': {u'shout': u'', u'body': [{u'x': 1, u'y': 0}, {u'x': 1, u'y': 1}, {u'x': 1, u'y': 2}], u'name': u'SnakeOne', u'id': u'gs_xVWXycYGQShh3fWQVKk9gHRF', u'health': 95}}
 #chemin = [0, 0, 0, 0]
 
-def message(data):
-    print(data)
-
 def choix_chemin(chemin):
     for i in range(4):
         if chemin[i] == max(chemin):
@@ -84,6 +81,8 @@ def colision_tete(data, chemin):
 
     for i in range(snake_number):
 
+        print("snake_id: " + data['board']['snakes'][i]['id'] + "snake_name: " + data['board']['snakes'][i]['name'] + "i: " + str(i))
+
         if data['board']['snakes'][i]['id'] != data['you']['id']:
 
             wich_snake.append(i)
@@ -103,7 +102,7 @@ def colision_tete(data, chemin):
     nombre_id = -1
     print("snake_number: " + str(snake_number))
     print("snake_position: " + str(snake_position))
-    print("sanke_id: " + str(snake_id))
+    print("sanke_id: " + snake_id)
     print("wich_snake: " + str(wich_snake))
     for i in range(0, len(snake_position), 2):
 

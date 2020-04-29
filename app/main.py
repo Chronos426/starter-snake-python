@@ -2,7 +2,7 @@ import json
 import os
 import random
 import bottle
-from Brain import obstacle_detection,message
+from Brain import obstacle_detection
 
 from api import ping_response, start_response, move_response, end_response
 
@@ -46,7 +46,7 @@ def start():
     """
     print(json.dumps(data))
 
-    color = "#00FF00"
+    color = "#A9A9A9"
 
     return start_response(color)
 
@@ -55,7 +55,6 @@ def start():
 def move():
     data = bottle.request.json
 
-    message(data)
     """
     TODO: Using the data from the endpoint request object, your
             snake AI must choose a direction to move in.
