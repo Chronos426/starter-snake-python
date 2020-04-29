@@ -81,9 +81,6 @@ def colision_tete(data, chemin):
 
     for i in range(snake_number):
 
-        print("snake_id: " + data['board']['snakes'][i]['id'] + "snake_name: " + data['board']['snakes'][i]['name'] + "i: " + str(i))
-        print("you_id: " + data['you']['id'])
-
         if data['board']['snakes'][i]['id'] != data['you']['id']:
 
             wich_snake.append(i)
@@ -101,21 +98,10 @@ def colision_tete(data, chemin):
             snake_position.append(data['board']['snakes'][i]['body'][0]['y'] + 1)
 
     nombre_id = -1
-    print("snake_number: " + str(snake_number))
-    print("snake_position: " + str(snake_position))
-    for i in range(len(snake_id)):
-        print("snake_id: " + snake_id[i])
-    print("wich_snake: " + str(wich_snake))
     for i in range(0, len(snake_position), 2):
 
         if i%8 == 0:
             nombre_id += 1
-            print("nombre_id: " + str(nombre_id))
-
-        length_my = len(data['you']['body'])
-        print("length_my: " + str(length_my))
-        length_ennemy = len(data['board']['snakes'][wich_snake[nombre_id]]['body'])
-        print("length_ennemy: " + str(length_ennemy))
 
         if head_x_1 - 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
             if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
