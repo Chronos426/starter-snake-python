@@ -23,7 +23,7 @@ def nombre_case(data,chemin):
         snake_lenght = len(data['board']['snakes'][i]['body'])
 
         # Met la case atteignable par la tete d'un snake ennemy en 1
-        if data['board']['snakes'][i]['id'] != data['you']['id']:
+        '''if data['board']['snakes'][i]['id'] != data['you']['id']:
             if data['board']['snakes'][i]['body'][0]['x'] >= 0:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] - 1] = 3
             if data['board']['snakes'][i]['body'][0]['x'] < board_width - 1:
@@ -31,7 +31,7 @@ def nombre_case(data,chemin):
             if data['board']['snakes'][i]['body'][0]['y'] - 1 >= 0:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y'] - 1][data['board']['snakes'][i]['body'][0]['x']] = 3
             if data['board']['snakes'][i]['body'][0]['y'] + 1 < board_width - 1:
-                board_matrice[data['board']['snakes'][i]['body'][0]['y'] + 1][data['board']['snakes'][i]['body'][0]['x']] = 3
+                board_matrice[data['board']['snakes'][i]['body'][0]['y'] + 1][data['board']['snakes'][i]['body'][0]['x']] = 3'''
 
         for j in range(snake_lenght):
             x = data['board']['snakes'][i]['body'][j]['x']
