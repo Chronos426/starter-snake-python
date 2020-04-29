@@ -140,6 +140,10 @@ def food_path(data, chemin):
             distance_food[1] = diff_x
             distance_food[2] = diff_y
 
+    print("distance_food: " + str(distance_food[0]))
+    print("diff_x: " + str(distance_food[1]))
+    print("diff_y: " + str(distance_food[2]))
+
     if distance_food[1] != 0:
         if distance_food[1] > 0:
             chemin[0] += 2
