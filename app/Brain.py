@@ -82,6 +82,7 @@ def colision_tete(data, chemin):
     for i in range(snake_number):
 
         print("snake_id: " + data['board']['snakes'][i]['id'] + "snake_name: " + data['board']['snakes'][i]['name'] + "i: " + str(i))
+        print("you_id: " + data['you']['id'])
 
         if data['board']['snakes'][i]['id'] != data['you']['id']:
 
