@@ -116,7 +116,7 @@ def construire_passage(x, y, board_passage, data, depth):
     board_width = data['board']['width']
     board_height = data['board']['height']
 
-    print(str(depth))
+    #print(str(depth))
 
     #if depth >= 6:
      #   return passage
