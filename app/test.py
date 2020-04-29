@@ -5,7 +5,8 @@ data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], 
          "id": "gs_WdqV3GF3Vj6TDbjffScYMgG4", "shout": "", "name": "SnakeOne"}], "width": 11, "height": 11},
     "turn": 6, "game": {"id": "08076fc9-07f0-462c-9ec7-59b3c8fdb08d"}}
 chemin = [5, 2, 1, 0]
-
-
-for i in range(0, len(chemin), 2):
-    print(str(chemin[i]))
+nombre_id = 0
+for i in range(0, 16, 2):
+    if i%8 == 0:
+        nombre_id += 1
+    print(str(nombre_id))

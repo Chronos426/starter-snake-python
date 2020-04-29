@@ -79,11 +79,13 @@ def colision_tete(data, chemin):
     head_y_1 = data['you']['body'][0]['y']
     snake_number = len(data['board']['snakes'])
     snake_position = []
+    snake_id = []
 
     for i in range(snake_number):
 
         if data['board']['snakes'][i]['id'] != data['you']['id']:
 
+            snake_id.append(data['board']['snakes'][i]['id'])
             snake_position.append(data['board']['snakes'][i]['body'][0]['x'] - 1)
             snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
 
@@ -96,16 +98,32 @@ def colision_tete(data, chemin):
             snake_position.append(data['board']['snakes'][i]['body'][0]['x'])
             snake_position.append(data['board']['snakes'][i]['body'][0]['y'] + 1)
 
+    nombre_id = 0
     for i in range(0, len(snake_position), 2):
-        if head_x_1 - 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
-            chemin[0] -= 300
-        if head_x_1 + 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
-            chemin[1] -= 300
-        if head_x_1 == snake_position[i] and head_y_1 - 1 == snake_position[i+1]:
-            chemin[2] -= 300
-        if head_x_1 == snake_position[i] and head_y_1 + 1 == snake_position[i+1]:
-            chemin[3] -= 300
 
+        if i%8 == 0:
+            nombre_id += 1
+
+        if head_x_1 - 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
+            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+                chemin[0] -= 300
+            else:
+                chemin[0] += 300
+        if head_x_1 + 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
+            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+                chemin[1] -= 300
+            else:
+                chemin[1] += 300
+        if head_x_1 == snake_position[i] and head_y_1 - 1 == snake_position[i+1]:
+            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+                chemin[2] -= 300
+            else:
+                chemin[2] += 300
+        if head_x_1 == snake_position[i] and head_y_1 + 1 == snake_position[i+1]:
+            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+                chemin[3] -= 300
+            else:
+                chemin[3] += 300
 
 def food_path(data, chemin):
     head_x_1 = data['you']['body'][0]['x']
