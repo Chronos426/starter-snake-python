@@ -105,6 +105,7 @@ def colision_tete(data, chemin):
 
         if i%8 == 0:
             nombre_id += 1
+            print(str(nombre_id))
 
         if head_x_1 - 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
             if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
