@@ -101,11 +101,15 @@ def colision_tete(data, chemin):
             snake_position.append(data['board']['snakes'][i]['body'][0]['y'] + 1)
 
     nombre_id = -1
+    print("snake_number: " + snake_number)
+    print("snake_position: " + snake_position)
+    print("sanke_id: " + snake_id)
+    print("wich_snake: " + wich_snake)
     for i in range(0, len(snake_position), 2):
 
         if i%8 == 0:
             nombre_id += 1
-            print(str(nombre_id))
+            print("nombre_id: " + str(nombre_id))
 
         length_my = len(data['you']['body'])
         print("length_my: " + str(length_my))

@@ -6,7 +6,8 @@ data = {"you": {"body": [{"y": 3, "x": 9}, {"y": 4, "x": 9}, {"y": 5, "x": 9}], 
     "turn": 6, "game": {"id": "08076fc9-07f0-462c-9ec7-59b3c8fdb08d"}}
 chemin = [5, 2, 1, 0]
 nombre_id = 0
-for i in range(0, 16, 2):
+for i in range(0, 0, 2):
+    print("bitch")
     if i%8 == 0:
         nombre_id += 1
     print(str(nombre_id))
