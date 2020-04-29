@@ -11,3 +11,10 @@ for i in range(0, 0, 2):
     if i%8 == 0:
         nombre_id += 1
     print(str(nombre_id))
+
+    print("passage: " + str(passage))
+
+    for i in range(board_height):
+        for j in range(board_height):
+            print(str(board_passage[i][j]), end='')
+        print("")
