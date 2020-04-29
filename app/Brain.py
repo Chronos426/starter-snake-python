@@ -135,7 +135,7 @@ def food_path(data, chemin):
 
         diff_x = head_x_1 - food_x
         diff_y = head_y_1 - food_y
-        if diff_y+diff_x < distance_food[0]:
+        if abs(diff_y)+abs(diff_x) < distance_food[0]:
             distance_food[0] = diff_x + diff_y
             distance_food[1] = diff_x
             distance_food[2] = diff_y
