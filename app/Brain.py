@@ -103,7 +103,8 @@ def colision_tete(data, chemin):
     nombre_id = -1
     print("snake_number: " + str(snake_number))
     print("snake_position: " + str(snake_position))
-    print("sanke_id: " + snake_id)
+    for i in range(len(snake_id)):
+        print("snake_id: " + snake_id[i])
     print("wich_snake: " + str(wich_snake))
     for i in range(0, len(snake_position), 2):
 
