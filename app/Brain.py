@@ -16,7 +16,7 @@ def body_detection(data,chemin):
 
     for j in range(nombre_snake):
         taille = len(data['board']['snakes'][j]['body'])
-        taille -= 1
+        taille -= 2
         for i in range(taille):
             if head_x_1 + 1 == data['board']['snakes'][j]['body'][i+1]['x'] and head_y_1 == data['board']['snakes'][j]['body'][i+1]['y']:
                 chemin[1] -= 1000
@@ -31,8 +31,6 @@ def body_detection(data,chemin):
 def obstacle_detection(data):
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
-    head_x_2 = data['you']['body'][1]['x']
-    head_y_2 = data['you']['body'][1]['y']
     board_width = data['board']['width']
     board_height = data['board']['height']
     chemin = [0., 0., 0., 0.]
