@@ -26,11 +26,11 @@ def nombre_case(data,chemin):
         if data['board']['snakes'][i]['id'] != data['you']['id']:
             if data['board']['snakes'][i]['body'][0]['x'] >= 0:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] - 1] = 1
-            if data['board']['snakes'][i]['body'][0]['x'] <= board_width - 1:
+            if data['board']['snakes'][i]['body'][0]['x'] < board_width - 1:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] + 1] = 1
             if data['board']['snakes'][i]['body'][0]['y'] - 1 >= 0:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y'] - 1][data['board']['snakes'][i]['body'][0]['x']] = 1
-            if data['board']['snakes'][i]['body'][0]['y'] + 1 <= board_width - 1:
+            if data['board']['snakes'][i]['body'][0]['y'] + 1 < board_width - 1:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y'] + 1][data['board']['snakes'][i]['body'][0]['x']] = 1
 
         for j in range(snake_lenght):
