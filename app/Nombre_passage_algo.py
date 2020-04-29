@@ -23,15 +23,15 @@ def nombre_case(data,chemin):
         snake_lenght = len(data['board']['snakes'][i]['body'])
 
         # Met la case atteignable par la tete d'un snake ennemy en 1
-        '''if data['board']['snakes'][i]['id'] != data['you']['id']:
-            if data['board']['snakes'][i]['body'][0]['x'] >= 0:
+        if data['board']['snakes'][i]['id'] != data['you']['id']:
+            if data['board']['snakes'][i]['body'][0]['x'] - 1 >= 0:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] - 1] = 3
             if data['board']['snakes'][i]['body'][0]['x'] < board_width - 1:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] + 1] = 3
             if data['board']['snakes'][i]['body'][0]['y'] - 1 >= 0:
                 board_matrice[data['board']['snakes'][i]['body'][0]['y'] - 1][data['board']['snakes'][i]['body'][0]['x']] = 3
             if data['board']['snakes'][i]['body'][0]['y'] + 1 < board_width - 1:
-                board_matrice[data['board']['snakes'][i]['body'][0]['y'] + 1][data['board']['snakes'][i]['body'][0]['x']] = 3'''
+                board_matrice[data['board']['snakes'][i]['body'][0]['y'] + 1][data['board']['snakes'][i]['body'][0]['x']] = 3
 
         for j in range(snake_lenght):
             x = data['board']['snakes'][i]['body'][j]['x']
@@ -96,6 +96,7 @@ def construire_passage(x, y, board_passage, data):
     # left
     if x-1 >= 0 and board_passage[y][x-1] == 3:
         passage -= 10
+        board_passage[y][x - 1] = 0
     if x-1 >= 0 and board_passage[y][x-1] == 0:
         board_passage[y][x-1] = 2
         passage += 1
@@ -104,6 +105,7 @@ def construire_passage(x, y, board_passage, data):
     # right
     if x+1 < board_width and board_passage[y][x+1] == 3:
         passage -= 10
+        board_passage[y][x + 1] = 0
     if x+1 < board_width and board_passage[y][x+1] == 0:
         board_passage[y][x+1] = 2
         passage += 1
@@ -112,6 +114,7 @@ def construire_passage(x, y, board_passage, data):
     # up
     if y-1 >= 0 and board_passage[y - 1][x] == 3:
         passage -= 10
+        board_passage[y-1][x] = 0
     if y-1 >= 0 and board_passage[y-1][x] == 0:
         board_passage[y-1][x] = 2
         passage += 1
@@ -120,6 +123,7 @@ def construire_passage(x, y, board_passage, data):
     # down
     if y+1 < board_height and board_passage[y + 1][x] == 3:
         passage -= 10
+        board_passage[y+1][x] = 0
     if y+1 < board_height and board_passage[y+1][x] ==0:
         board_passage[y+1][x] = 2
         passage += 1
