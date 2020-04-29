@@ -18,10 +18,16 @@ def nombre_case(data,chemin):
         board_matrice.append(board_matrice_ligne)
 
     #matrice remplie de 0 et 1 en fct des snakes
-
     snake_number = len(data['board']['snakes'])
     for i in range(snake_number):
         snake_lenght = len(data['board']['snakes'][i]['body'])
+
+        # Met la case atteignable par la tête d'un snake ennemy en 1
+        if data['board']['snakes'][i]['id'] != data['you']['id']:
+            board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] - 1] = 1
+            board_matrice[data['board']['snakes'][i]['body'][0]['y']][data['board']['snakes'][i]['body'][0]['x'] + 1] = 1
+            board_matrice[data['board']['snakes'][i]['body'][0]['y'] - 1][data['board']['snakes'][i]['body'][0]['x']] = 1
+            board_matrice[data['board']['snakes'][i]['body'][0]['y'] + 1][data['board']['snakes'][i]['body'][0]['x']] = 1
 
         for j in range(snake_lenght):
             x = data['board']['snakes'][i]['body'][j]['x']
