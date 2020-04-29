@@ -80,11 +80,13 @@ def colision_tete(data, chemin):
     snake_number = len(data['board']['snakes'])
     snake_position = []
     snake_id = []
+    wich_snake = []
 
     for i in range(snake_number):
 
         if data['board']['snakes'][i]['id'] != data['you']['id']:
 
+            wich_snake.append(i)
             snake_id.append(data['board']['snakes'][i]['id'])
             snake_position.append(data['board']['snakes'][i]['body'][0]['x'] - 1)
             snake_position.append(data['board']['snakes'][i]['body'][0]['y'])
@@ -105,22 +107,22 @@ def colision_tete(data, chemin):
             nombre_id += 1
 
         if head_x_1 - 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
-            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+            if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[0] -= 300
             else:
                 chemin[0] += 300
         if head_x_1 + 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
-            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+            if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[1] -= 300
             else:
                 chemin[1] += 300
         if head_x_1 == snake_position[i] and head_y_1 - 1 == snake_position[i+1]:
-            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+            if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[2] -= 300
             else:
                 chemin[2] += 300
         if head_x_1 == snake_position[i] and head_y_1 + 1 == snake_position[i+1]:
-            if len(data['board']['snakes'][snake_id[nombre_id]]['body']) >= len(data['you']['body']):
+            if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[3] -= 300
             else:
                 chemin[3] += 300
