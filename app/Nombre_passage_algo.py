@@ -118,8 +118,8 @@ def construire_passage(x, y, board_passage, data, depth):
 
     print(str(depth))
 
-    if depth >= 6:
-        return passage
+    #if depth >= 6:
+     #   return passage
 
     # left
     if x-1 >= 0 and board_passage[y][x-1] == 3:

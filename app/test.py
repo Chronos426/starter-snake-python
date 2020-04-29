@@ -16,5 +16,5 @@ for i in range(0, 0, 2):
 
     for i in range(board_height):
         for j in range(board_height):
-            print(str(board_passage[i][j]), end='')
+            print(str(board_passage[i][j])+ " ", end='')
         print("")
