@@ -55,6 +55,9 @@ def calcul_passage(data, board_matrice, x, y, chemin_passage):
     # left
     board_passage = copy.deepcopy(board_matrice)
     passage = 0
+    if x-1 >= 0 and board_passage[y][x-1] == 3:
+        passage -= 3
+        board_passage[y][x - 1] = 0
     if x-1 >= 0 and board_passage[y][x-1] == 0:
         board_passage[y][x-1] = 2
         passage += 1
@@ -64,6 +67,9 @@ def calcul_passage(data, board_matrice, x, y, chemin_passage):
     # right
     board_passage = copy.deepcopy(board_matrice)
     passage = 0
+    if x+1 < board_width and board_passage[y][x+1] == 3:
+        passage -= 3
+        board_passage[y][x + 1] = 0
     if x+1 < board_width and board_passage[y][x+1] == 0:
         board_passage[y][x+1] = 2
         passage += 1
@@ -73,6 +79,9 @@ def calcul_passage(data, board_matrice, x, y, chemin_passage):
     # up
     board_passage = copy.deepcopy(board_matrice)
     passage = 0
+    if y-1 >= 0 and board_passage[y - 1][x] == 3:
+        passage -= 3
+        board_passage[y-1][x] = 0
     if y-1 >= 0 and board_passage[y-1][x] == 0:
         board_passage[y-1][x] = 2
         passage += 1
@@ -82,6 +91,9 @@ def calcul_passage(data, board_matrice, x, y, chemin_passage):
     # down
     board_passage = copy.deepcopy(board_matrice)
     passage = 0
+    if y+1 < board_height and board_passage[y + 1][x] == 3:
+        passage -= 3
+        board_passage[y+1][x] = 0
     if y+1 < board_height and board_passage[y+1][x] ==0:
         board_passage[y+1][x] = 2
         passage += 1
@@ -95,7 +107,7 @@ def construire_passage(x, y, board_passage, data):
 
     # left
     if x-1 >= 0 and board_passage[y][x-1] == 3:
-        passage -= 10
+        passage -= 3
         board_passage[y][x - 1] = 0
     if x-1 >= 0 and board_passage[y][x-1] == 0:
         board_passage[y][x-1] = 2
@@ -104,7 +116,7 @@ def construire_passage(x, y, board_passage, data):
 
     # right
     if x+1 < board_width and board_passage[y][x+1] == 3:
-        passage -= 10
+        passage -= 3
         board_passage[y][x + 1] = 0
     if x+1 < board_width and board_passage[y][x+1] == 0:
         board_passage[y][x+1] = 2
@@ -113,7 +125,7 @@ def construire_passage(x, y, board_passage, data):
 
     # up
     if y-1 >= 0 and board_passage[y - 1][x] == 3:
-        passage -= 10
+        passage -= 3
         board_passage[y-1][x] = 0
     if y-1 >= 0 and board_passage[y-1][x] == 0:
         board_passage[y-1][x] = 2
@@ -122,7 +134,7 @@ def construire_passage(x, y, board_passage, data):
 
     # down
     if y+1 < board_height and board_passage[y + 1][x] == 3:
-        passage -= 10
+        passage -= 3
         board_passage[y+1][x] = 0
     if y+1 < board_height and board_passage[y+1][x] ==0:
         board_passage[y+1][x] = 2
