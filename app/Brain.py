@@ -139,26 +139,37 @@ def follow_tail(data, chemin):
         chemin[3] += 1
 
 def food_path(data, chemin):
+
     head_x_1 = data['you']['body'][0]['x']
     head_y_1 = data['you']['body'][0]['y']
 
+    snake_number = len(data['board']['snakes'])
     nombre_food = len(data['board']['food'])
     distance_food = [100, 0, 0]
 
+
     for i in range(nombre_food):
+
         food_x = data['board']['food'][i]['x']
         food_y = data['board']['food'][i]['y']
 
         diff_x = head_x_1 - food_x
         diff_y = head_y_1 - food_y
-        if abs(diff_y)+abs(diff_x) < distance_food[0]:
-            distance_food[0] = abs(diff_x) + abs(diff_y)
-            distance_food[1] = diff_x
-            distance_food[2] = diff_y
+        distance_moi = abs(diff_x) + abs(diff_y)
+        for j in range(snake_number):
 
-    print("distance_food: " + str(distance_food[0]))
-    print("diff_x: " + str(distance_food[1]))
-    print("diff_y: " + str(distance_food[2]))
+            snake_head_x = data['board']['snakes'][j]['body'][0]['x']
+            snake_head_y = data['board']['snakes'][j]['body'][0]['y']
+            diff_x_snake = snake_head_x - food_x
+            diff_y_snake = snake_head_y - food_y
+
+            if abs(diff_y_snake)+abs(diff_x_snake) < distance_moi:
+                break
+            if j == snake_number - 1 and distance_food[0] > distance_moi:
+                distance_food[0] = distance_moi
+                distance_food[1] = diff_x
+                distance_food[2] = diff_y
+
 
     if distance_food[1] != 0:
         if distance_food[1] > 0:
@@ -173,7 +184,6 @@ def food_path(data, chemin):
             chemin[3] += 2
 
     return
-
 
 
 
