@@ -50,7 +50,9 @@ def obstacle_detection(data):
 
     nombre_case(data, chemin)
 
-    colision_tete(data,chemin)
+    colision_tete(data, chemin)
+
+    follow_tail(data, chemin)
 
     direction = choix_chemin(chemin)
     print("chemin 0: " + str(chemin[0]))
@@ -121,6 +123,24 @@ def colision_tete(data, chemin):
                 chemin[3] -= 300
             else:
                 chemin[3] += 10
+
+def follow_tail(data, chemin):
+    head_x_1 = data['you']['body'][0]['x']
+    head_y_1 = data['you']['body'][0]['y']
+
+    each_tail = []
+    snake_number = len(data['board']['snakes'])
+
+    for i in range(snake_number):
+        snake_length = len(data['board']['snakes'][i]['body'])
+        if head_x_1 - 1 == data['board']['snakes'][i]['body'][snake_length - 1]['x'] and head_y_1 == data['board']['snakes'][i]['body'][snake_length - 1]['y']:
+            chemin[0] += 1
+        if head_x_1 + 1 == data['board']['snakes'][i]['body'][snake_length - 1]['x'] and head_y_1 == data['board']['snakes'][i]['body'][snake_length - 1]['y']:
+            chemin[1] += 1
+        if head_x_1 == data['board']['snakes'][i]['body'][snake_length - 1]['x'] and head_y_1 - 1 == data['board']['snakes'][i]['body'][snake_length - 1]['y']:
+            chemin[2] += 1
+        if head_x_1 == data['board']['snakes'][i]['body'][snake_length - 1]['x'] and head_y_1 + 1 == data['board']['snakes'][i]['body'][snake_length - 1]['y']:
+            chemin[3] += 1
 
 def food_path(data, chemin):
     head_x_1 = data['you']['body'][0]['x']
