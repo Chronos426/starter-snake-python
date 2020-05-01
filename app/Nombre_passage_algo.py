@@ -23,7 +23,8 @@ def nombre_case(data,chemin):
     #matrice remplie de 0 et 1 en fct des snakes
     snake_number = len(data['board']['snakes'])
     for i in range(snake_number):
-        snake_lenght = len(data['board']['snakes'][i]['body'])
+        snake_lenght = len(data['board']['snakes'][i]['body']) - 1
+        # n'ajoute pas la queue comme obstacle
 
         # Met la case atteignable par la tete d'un snake ennemy en 1
         if data['board']['snakes'][i]['id'] != data['you']['id']:
