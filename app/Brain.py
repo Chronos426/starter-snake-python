@@ -147,7 +147,6 @@ def food_path(data, chemin):
     nombre_food = len(data['board']['food'])
     distance_food = [100, 0, 0]
 
-
     for i in range(nombre_food):
 
         food_x = data['board']['food'][i]['x']
@@ -169,7 +168,6 @@ def food_path(data, chemin):
                 distance_food[0] = distance_moi
                 distance_food[1] = diff_x
                 distance_food[2] = diff_y
-
 
     if distance_food[1] != 0:
         if distance_food[1] > 0:

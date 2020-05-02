@@ -105,7 +105,7 @@ def calcul_passage(data, board_matrice, x, y, chemin_passage):
     if y+1 < board_height and board_passage[y + 1][x] == 3:
         passage -= 2
         board_passage[y+1][x] = 0
-    if y+1 < board_height and board_passage[y+1][x] ==0:
+    if y+1 < board_height and board_passage[y+1][x] == 0:
         board_passage[y+1][x] = 2
         passage += 1
         depth += 1
@@ -114,52 +114,66 @@ def calcul_passage(data, board_matrice, x, y, chemin_passage):
 
 def construire_passage(x, y, board_passage, data, depth):
     global passage
+    max_depth = 6
     board_width = data['board']['width']
     board_height = data['board']['height']
 
-    #print(str(depth))
+    #print("depth: " + str(depth))
 
-    #if depth >= 6:
-     #   return passage
+    if depth >= max_depth:
+        return
 
     # left
     if x-1 >= 0 and board_passage[y][x-1] == 3:
         passage -= 2
         board_passage[y][x - 1] = 0
-    if x-1 >= 0 and board_passage[y][x-1] == 0:
+    if x-1 >= 0 and (board_passage[y][x-1] == 0 or board_passage[y][x-1] == 2):
+        if board_passage[y][x-1] == 0:
+            passage += 1
         board_passage[y][x-1] = 2
-        passage += 1
-        depth += 1
-        construire_passage(x-1, y, board_passage, data, depth)
+        #print("left")
+        construire_passage(x-1, y, board_passage, data, depth + 1)
+
+    if depth >= max_depth:
+        return
 
     # right
     if x+1 < board_width and board_passage[y][x+1] == 3:
         passage -= 2
         board_passage[y][x + 1] = 0
-    if x+1 < board_width and board_passage[y][x+1] == 0:
+    if x+1 < board_width and (board_passage[y][x+1] == 0 or board_passage[y][x+1] == 2):
+        if board_passage[y][x+1] == 0:
+            passage += 1
         board_passage[y][x+1] = 2
-        passage += 1
-        depth += 1
-        construire_passage(x+1, y, board_passage, data, depth)
+        #print("right")
+        construire_passage(x+1, y, board_passage, data, depth + 1)
+
+    if depth >= max_depth:
+        return
 
     # up
     if y-1 >= 0 and board_passage[y - 1][x] == 3:
         passage -= 2
         board_passage[y-1][x] = 0
-    if y-1 >= 0 and board_passage[y-1][x] == 0:
+    if y-1 >= 0 and (board_passage[y-1][x] == 0 or board_passage[y-1][x] ==  2):
+        if board_passage[y-1][x] == 0:
+            passage += 1
         board_passage[y-1][x] = 2
-        passage += 1
-        depth += 1
-        construire_passage(x, y-1, board_passage, data, depth)
+        #print("up")
+        construire_passage(x, y-1, board_passage, data, depth + 1)
+
+    if depth >= max_depth:
+        return
 
     # down
     if y+1 < board_height and board_passage[y + 1][x] == 3:
         passage -= 2
         board_passage[y+1][x] = 0
-    if y+1 < board_height and board_passage[y+1][x] == 0:
+    if y+1 < board_height and (board_passage[y+1][x] == 0 or board_passage[y+1][x] == 2):
+        if board_passage[y+1][x] == 0:
+            passage += 1
         board_passage[y+1][x] = 2
-        passage += 1
-        depth += 1
-        construire_passage(x, y+1, board_passage, data, depth)
+        #print("down")
+        construire_passage(x, y+1, board_passage, data, depth + 1)
 
     return passage
