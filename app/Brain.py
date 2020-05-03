@@ -107,22 +107,22 @@ def colision_tete(data, chemin):
             if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[0] -= 300
             else:
-                chemin[0] += 30
+                chemin[0] += 10
         if head_x_1 + 1 == snake_position[i] and head_y_1 == snake_position[i+1]:
             if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[1] -= 300
             else:
-                chemin[1] += 30
+                chemin[1] += 10
         if head_x_1 == snake_position[i] and head_y_1 - 1 == snake_position[i+1]:
             if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[2] -= 300
             else:
-                chemin[2] += 30
+                chemin[2] += 10
         if head_x_1 == snake_position[i] and head_y_1 + 1 == snake_position[i+1]:
             if len(data['board']['snakes'][wich_snake[nombre_id]]['body']) >= len(data['you']['body']):
                 chemin[3] -= 300
             else:
-                chemin[3] += 30
+                chemin[3] += 10
 
 def follow_tail(data, chemin):
     head_x_1 = data['you']['body'][0]['x']
