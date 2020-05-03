@@ -171,15 +171,15 @@ def food_path(data, chemin):
 
     if distance_food[1] != 0:
         if distance_food[1] > 0:
-            chemin[0] += 10
+            chemin[0] += 5
         else:
-            chemin[1] += 10
+            chemin[1] += 5
 
     if distance_food[2] != 0:
         if distance_food[2] > 0:
-            chemin[2] += 10
+            chemin[2] += 5
         else:
-            chemin[3] += 10
+            chemin[3] += 5
 
     return
 
